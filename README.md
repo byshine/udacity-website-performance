@@ -3,6 +3,8 @@
 
 #  main.js
 
+View at: https://byshine.github.io/udacity-website-performance-pizza/
+
 1. Move document.querySelector("#movingPizzas1") outside of for loop to prevent multiple DOM queries.
 
 2. Move document.body.scrollTop outside of for loop to separate Read & Write on DOM
@@ -14,6 +16,9 @@
 5. Store newWidth in an array and loop this array instead
 
 # index.html
+Viewable at:
+
+View at: https://byshine.github.io/udacity-website-performance-index/ 
 
 1. Incline CSS - Pagespeed kept complaining about this.
 
