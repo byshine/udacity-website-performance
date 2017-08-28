@@ -18,17 +18,17 @@ module.exports = function(grunt) {
             name: 'small',
             width: '30%',
             suffix: '_small',
-            quality: 20
+            quality: 10
           },{
             name: 'large',
-            width: '50%',
+            width: '100%',
             suffix: '_large',
-            quality: 40
+            quality: 20
           }]
         },
         files: [{
           expand: true,
-          src: ['img/*.{gif,jpg,png}'],
+          src: ['img/*.{gif,jpg,png}', 'views/images/*.{gif,jpg,png}'],
           cwd: '',
           dest: '../dist/'
         }]
@@ -38,17 +38,46 @@ module.exports = function(grunt) {
     cssmin: {
       target: {
         files: {
-          '../dist/css/style.min.css': ['css/style.css'],
-          '../dist/css/print.min.css': ['css/print.css'],
+          '../dist/css/print.min.css': ['css/print.css']
    
         }
       }
     },
+
+    htmlmin: {                                     // Task
+        dist: { 
+          options: {
+            removeComments: true,
+            collapseWhitespace: true
+          },                                    // Target
+          files: {                                   // Dictionary of files
+            '../dist/index.html': 'index.html',     // 'destination': 'source'
+            '../dist/project-2048.html': 'project-2048.html',
+            '../dist/project-mobile.html': 'project-mobile.html', 
+            '../dist/project-webperf.html': 'project-webperf.html'
+          }
+        }
+      },
+imagemin: {
+        dynamic: {
+            options: {
+                optimizationLevel: 3
+            },
+            files: [{
+              expand: true,
+              src: ['img/*.{gif,jpg,png}'],
+              cwd: '',
+              dest: '../dist/'
+            }]
+        }
+    },
   });
 
   grunt.loadNpmTasks('grunt-responsive-images');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-cssmin');
-  grunt.registerTask('default', ['responsive_images', 'uglify', 'cssmin']);
+  grunt.loadNpmTasks('grunt-contrib-htmlmin');
+  grunt.registerTask('default', ['responsive_images', 'uglify', 'cssmin', 'htmlmin']);
 
 };
