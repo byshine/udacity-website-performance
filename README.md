@@ -15,6 +15,14 @@ View at: https://byshine.github.io/udacity-website-performance-pizza/
 
 5. Store newWidth in an array and loop this array instead
 
+# Changes
+
+1.1 Replaced querySelector with either getElemenyById or getElementsByClassName
+
+1.2 Dynamic Calculation of pizzas generated, done by some math of screen height.
+
+1.3 Provided Fixed value for new width of pizza
+
 # index.html
 Viewable at:
 
